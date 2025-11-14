@@ -1,5 +1,7 @@
 import {createToDo, deleteToDo} from "./todoitem.js";
 import { createProject } from "./project.js";
+import PersonalPage from "./personalpage.js";
+import "../styles/general-styles.css"
 
 let firstProject = createProject("My first project");
 let firstToDo = createToDo("Finish this project", "Finish the ToDoApp for my github portfolio", "18-11-2025", "medium", firstProject);
@@ -28,3 +30,5 @@ for (let key of firstProject.todos_list) {
     }
     contador++;
 }
+
+PersonalPage();
