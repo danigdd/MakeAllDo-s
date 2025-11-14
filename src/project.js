@@ -1,12 +1,16 @@
+import { displayProject } from "./personalpage.js";
+
 class Project {
-    constructor(project) {
+    constructor(project, selected) {
         this.todos_list = [];
-        this._name = project;
+        this.name = project;
+        this.selected = selected;
     }
 }
 
-function createProject(title) {
-    let project = new Project(title);
+function createProject(title, selected) {
+    const project = new Project(title, selected);
+    displayProject(project);
     return project;
 }
 
