@@ -1,4 +1,5 @@
 import { errors } from "./constants.js";
+import {Project} from "./project.js";
 
 class ToDoItem {
     constructor(title, description, dueDate, priority, project) {
@@ -13,28 +14,17 @@ class ToDoItem {
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
-        this.project = project;
-        this.project_name = this.project.name;
+        this.project_name = project.name;
         this.id = Math.random().toString(36).slice(2);
     }
 }
 
-class Project {
-    constructor(project) {
-        this.todos_list = [];
-        this.name = project;
-    }
-}
+
 
 function createToDo(title, description, dueDate, priority, project) {
     let to_do_object = new ToDoItem(title, description, dueDate, priority, project);
     addToDoProject(project, to_do_object);
     return to_do_object;
-}
-
-function createProject(title) {
-    let project = new Project(title);
-    return project;
 }
 
 function addToDoProject(project, todo) {
@@ -49,4 +39,4 @@ function deleteToDo(to_do_id, project) {
     project.todos_list = project.todos_list.filter(todo => todo["id"] !== to_do_id);
     return;
 }
-export {createToDo, createProject, addToDoProject, deleteToDo};
+export {createToDo, deleteToDo};

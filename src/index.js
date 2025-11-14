@@ -1,4 +1,5 @@
-import {createToDo, createProject, addToDoProject, deleteToDo} from "./todoitems.js";
+import {createToDo, deleteToDo} from "./todoitem.js";
+import { createProject } from "./project.js";
 
 let firstProject = createProject("My first project");
 let firstToDo = createToDo("Finish this project", "Finish the ToDoApp for my github portfolio", "18-11-2025", "medium", firstProject);
