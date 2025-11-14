@@ -1,20 +1,33 @@
 import "../styles/personal-page.css";
+import logoImageSource from "../resources/todologo.png"
+
+const contentTemplate = document.getElementById("content");
 
 export default function PersonalPage() {
-    const contentTemplate = document.getElementById("content");
+    createAndDisplayProjects();
+    createAndDisplayLayout();
 
-    const contentDiv = document.createElement("div");
-    const paragraphContentDiv = document.createElement("p");
-    paragraphContentDiv.textContent = "hi";
-    contentDiv.appendChild(paragraphContentDiv);
 
-    contentTemplate.appendChild(contentDiv);
+}
 
-    const secondcontent = document.createElement("div");
-    const secondparagraphContentDiv = document.createElement("p");
-    secondparagraphContentDiv.textContent = "hi";
-    contentDiv.appendChild(secondparagraphContentDiv);
+function createAndDisplayProjects() {
+    const projectsDisplayed = document.createElement("div");
+    projectsDisplayed.id = "leftSectionProjects";
+    contentTemplate.appendChild(projectsDisplayed);
 
-    contentTemplate.appendChild(secondcontent);
+    const logoImage = document.createElement("img");
+    logoImage.id = "logoImage";
+    logoImage.src = logoImageSource;
+    projectsDisplayed.appendChild(logoImage);
 
+
+}
+
+function createAndDisplayLayout() {
+    const layoutDisplayed = document.createElement("div");
+    layoutDisplayed.id = "layoutDisplayed";
+    layoutDisplayed.textContent = "das";
+    contentTemplate.appendChild(layoutDisplayed);
+
+    
 }
