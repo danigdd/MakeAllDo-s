@@ -1,7 +1,7 @@
 class Project {
     constructor(project) {
         this.todos_list = [];
-        this.name = project;
+        this._name = project;
     }
 }
 

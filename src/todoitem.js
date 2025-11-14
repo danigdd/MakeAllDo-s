@@ -10,13 +10,56 @@ class ToDoItem {
         if ( !(project instanceof Project) ) throw new Error(errors["project"]);
 
         
-        this.title = title;
-        this.description = description;
-        this.dueDate = dueDate;
-        this.priority = priority;
-        this.project_name = project.name;
-        this.id = Math.random().toString(36).slice(2);
+        this._title = title;
+        this._description = description;
+        this._dueDate = dueDate;
+        this._priority = priority;
+        this._project_name = project._name;
+        this._id = Math.random().toString(36).slice(2);
+
+        
     }
+
+    get title() {
+        return this._title;
+    }
+    
+    set title(name) {
+        this._title = name;
+    }
+
+    get description() {
+        return this._description;
+    }
+
+    set description(name) {
+        this._description = name;
+    }
+
+    get dueDate() {
+        return this._dueDate;
+    }
+
+    set dueDate(day) {
+        this._dueDate = day;
+    }
+
+    get priority() {
+        return this._priority;
+    }
+
+    set priority(level) {
+        this._priority = level;
+    }
+
+    get project() {
+        return this._project_name;
+    }
+
+    get id() {
+        return this._id;
+    }
+
 }
 
 
