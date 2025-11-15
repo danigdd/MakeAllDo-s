@@ -3,22 +3,38 @@ import { displayProject } from "./personalpage.js";
 let list_of_projects = [];
 
 class Project {
-    constructor(project, selected) {
-        this.todos_list = [];
-        this.name = project;
-        this.selected = selected;
+    constructor(name) {
+        this.id = crypto.randomUUID();
+        this.todos = [];
+        this.name = name;
     }
 }
 
-function createProject(title, selected) {
-    const project = new Project(title, selected);
-    list_of_projects.push(project);
+// Global state for projects
+const projectState = {
+    projects : [],
+    selectedProjectID : null
+}
+
+// State manipulation
+function addProject(name) {
+    const project = new Project(name);
+    projectState.projects.push(project);
+
+    // if first project, we mark it as default
+    if (projectState.projects.length === 1) {
+        projectState.selectedProjectID = project.id;
+    }
+
     return project;
 }
 
-function searchSelectedProject() {
-    let selected_project = list_of_projects.find(project => project.selected === true);
-    return selected_project;
+function getSelectedProject() {
+    return projectState.projects.find(project => {
+        project.id === projectState.selectedProjectID;
+    });
 }
 
-export {Project, createProject, searchSelectedProject, list_of_projects};
+function selectProject(id) {
+    projectState.selectedProjectID = id;
+}
