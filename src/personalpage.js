@@ -8,8 +8,6 @@ function PersonalPage() {
     createAndDisplayLeftSection();
     displaySelected();
     createAndDisplayLayout();
-
-
 }
 
 function createAndDisplayLeftSection() {
