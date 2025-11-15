@@ -1,12 +1,12 @@
 import "../styles/personal-page.css";
 import logoImageSource from "../resources/todologo.png"
-
+import displaySelected from "./displayAllToDos.js";
 const contentTemplate = document.getElementById("content");
 
 function PersonalPage() {
     createAndDisplayLeftSection();
     createAndDisplayLayout();
-
+    displaySelected();
 
 }
 
