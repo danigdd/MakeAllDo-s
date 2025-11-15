@@ -1,12 +1,14 @@
 import "../styles/personal-page.css";
 import logoImageSource from "../resources/todologo.png"
 import displaySelected from "./displayAllToDos.js";
+import { searchSelectedProject, list_of_projects } from "./project.js";
 const contentTemplate = document.getElementById("content");
 
 function PersonalPage() {
     createAndDisplayLeftSection();
-    createAndDisplayLayout();
     displaySelected();
+    createAndDisplayLayout();
+
 
 }
 
@@ -46,12 +48,25 @@ function displayProject(projectObject) {
     if (projectObject.selected == true) projectToAdd.style.fontWeight = "700";
 }
 
+function displayAllProjects() {
+    for (let project of list_of_projects) {
+        displayProject(project);
+    }
+}
+
 function createAndDisplayLayout() {
     const layoutDisplayed = document.createElement("div");
     layoutDisplayed.id = "layoutDisplayed";
-    layoutDisplayed.textContent = "das";
     contentTemplate.appendChild(layoutDisplayed);
+
+    let selected_project = searchSelectedProject();
+    console.log(selected_project);
+    const selected_project_name = document.createElement("p");
+
+    if (selected_project) selected_project_name.textContent = selected_project.name;
+    else selected_project_name.textContent = "No project selected";
+    layoutDisplayed.appendChild(selected_project_name);
 
 }
 
-export {PersonalPage, displayProject};
+export {PersonalPage, displayAllProjects};

@@ -24,5 +24,6 @@ body {
     flex-direction: row;
     justify-content: start;
     align-items: stretch;
+    border: 3px solid rgba(255, 255, 255, 0.3);
 }
 

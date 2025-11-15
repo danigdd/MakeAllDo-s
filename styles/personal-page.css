@@ -47,3 +47,7 @@
     flex-direction: column;
     gap: 15px;
 }
+
+#layoutDisplayed {
+    background-color: green;
+}
