@@ -1,9 +1,11 @@
 import "../styles/personal-page.css";
 import logoImageSource from "../resources/todologo.png"
-import displaySelected from "./displayAllToDos.js";
+import {displaySelected} from "./displayAllToDos.js";
 import { searchSelectedProject, list_of_projects } from "./project.js";
 const contentTemplate = document.getElementById("content");
 
+let projectsRelationDOMLogic = {};
+let selected_project = null;
 function PersonalPage() {
     createAndDisplayLeftSection();
     createAndDisplayLayout();
@@ -37,11 +39,11 @@ function createAndDisplayLayout() {
     layoutDisplayed.id = "layoutDisplayed";
     contentTemplate.appendChild(layoutDisplayed);
 
-    let selected_project = searchSelectedProject();
+    selected_project = searchSelectedProject();
     console.log(selected_project);
     const selected_project_name = document.createElement("p");
 
-    if (selected_project) selected_project_name.textContent = selected_project.name + " To-Do's:";
+    if (selected_project) selected_project_name.textContent = selected_project.name + " To-Do's :";
     else selected_project_name.textContent = "No project selected";
     layoutDisplayed.appendChild(selected_project_name);
 
@@ -54,13 +56,16 @@ function displayProject(projectObject) {
 
     const projectToAdd = document.createElement("div");
     projectToAdd.textContent = projectObject.name;
+    projectToAdd.id = projectObject.name.toLowerCase().replace(/\s+/g, "") + "id";
     projectToAdd.style.cursor = "pointer";
 
     projectsDisplay.appendChild(projectToAdd);
 
+    projectsRelationDOMLogic[projectToAdd.id] = projectObject.id;
 
 
-    if (projectObject.selected == true) projectToAdd.style.fontWeight = "700";
+
+    markDOMProjectSelected(projectObject, projectToAdd);
 }
 
 function displayAllProjects() {
@@ -69,4 +74,12 @@ function displayAllProjects() {
     }
 }
 
-export {PersonalPage, displayAllProjects};
+function markDOMProjectSelected (projectLogic, projectDOM) {
+    if (projectLogic.selected == true) {
+        projectDOM.style.fontWeight = "700";
+
+        selected_project.selected = false;
+        // giveup
+    }
+}
+export {PersonalPage, displayAllProjects, projectsRelationDOMLogic, markDOMProjectSelected};
