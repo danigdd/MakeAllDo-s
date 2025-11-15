@@ -6,8 +6,8 @@ const contentTemplate = document.getElementById("content");
 
 function PersonalPage() {
     createAndDisplayLeftSection();
-    displaySelected();
     createAndDisplayLayout();
+    displaySelected();
 }
 
 function createAndDisplayLeftSection() {
@@ -32,6 +32,23 @@ function createAndDisplayLeftSection() {
 
 }
 
+function createAndDisplayLayout() {
+    const layoutDisplayed = document.createElement("div");
+    layoutDisplayed.id = "layoutDisplayed";
+    contentTemplate.appendChild(layoutDisplayed);
+
+    let selected_project = searchSelectedProject();
+    console.log(selected_project);
+    const selected_project_name = document.createElement("p");
+
+    if (selected_project) selected_project_name.textContent = selected_project.name;
+    else selected_project_name.textContent = "No project selected";
+    layoutDisplayed.appendChild(selected_project_name);
+
+}
+
+
+
 function displayProject(projectObject) {
     const projectsDisplay = document.getElementById("projectsDisplay");
 
@@ -50,21 +67,6 @@ function displayAllProjects() {
     for (let project of list_of_projects) {
         displayProject(project);
     }
-}
-
-function createAndDisplayLayout() {
-    const layoutDisplayed = document.createElement("div");
-    layoutDisplayed.id = "layoutDisplayed";
-    contentTemplate.appendChild(layoutDisplayed);
-
-    let selected_project = searchSelectedProject();
-    console.log(selected_project);
-    const selected_project_name = document.createElement("p");
-
-    if (selected_project) selected_project_name.textContent = selected_project.name;
-    else selected_project_name.textContent = "No project selected";
-    layoutDisplayed.appendChild(selected_project_name);
-
 }
 
 export {PersonalPage, displayAllProjects};

@@ -8,8 +8,6 @@ let secondProject = createProject("Prueba", false);
 
 PersonalPage();
 
-
-
 displayAllProjects();
 
 let firstToDo = createToDo("Finish this project", "Finish the ToDoApp for my github portfolio", "18-11-2025", "medium", firstProject);
