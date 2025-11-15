@@ -41,7 +41,7 @@ function createAndDisplayLayout() {
     console.log(selected_project);
     const selected_project_name = document.createElement("p");
 
-    if (selected_project) selected_project_name.textContent = selected_project.name;
+    if (selected_project) selected_project_name.textContent = selected_project.name + " To-Do's:";
     else selected_project_name.textContent = "No project selected";
     layoutDisplayed.appendChild(selected_project_name);
 

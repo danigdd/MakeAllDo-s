@@ -48,6 +48,21 @@
     gap: 15px;
 }
 
+#projectsDisplay div {
+    margin-left: 10px;
+    padding-right: 10px;
+    transition: 0.3s;
+}
+#projectsDisplay div:hover {
+    background-color: rgba(0,0,0,0.2);
+}
 #layoutDisplayed {
-    background-color: green;
+    padding-left: 50px;
+    padding-top: 50px;
+}
+
+#layoutDisplayed p {
+    font-size: 38px;
+    color: #FFFFFF;
+    font-weight: 900;
 }
