@@ -1,7 +1,3 @@
-import { displayProject } from "./personalpage.js";
-
-let list_of_projects = [];
-
 class Project {
     constructor(name) {
         this.id = crypto.randomUUID();
@@ -30,9 +26,9 @@ function addProject(name) {
 }
 
 function getSelectedProject() {
-    return projectState.projects.find(project => {
-        project.id === projectState.selectedProjectID;
-    });
+    return projectState.projects.find(
+        project => project.id === projectState.selectedProjectID
+    );
 }
 
 function selectProject(id) {
