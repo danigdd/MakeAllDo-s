@@ -34,3 +34,5 @@ function getSelectedProject() {
 function selectProject(id) {
     projectState.selectedProjectID = id;
 }
+
+export {addProject, projectState};
