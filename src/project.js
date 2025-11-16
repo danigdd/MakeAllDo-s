@@ -12,6 +12,19 @@ const projectState = {
     selectedProjectID : null
 }
 
+
+function addTodoToProject(projectId, todo) {
+    const project = projectState.projects.find(p => p.id === projectId);
+    if (!project) return;
+    project.todos.push(todo);
+}
+
+function deleteTodo(projectId, todoId) {
+    const project = projectState.projects.find(p => p.id === projectId);
+    if (!project) return;
+    project.todos = project.todos.filter(t => t.id !== todoId);
+}
+
 // State manipulation
 function addProject(name) {
     const project = new Project(name);
@@ -35,4 +48,4 @@ function selectProject(id) {
     projectState.selectedProjectID = id;
 }
 
-export {addProject, projectState, selectProject, getSelectedProject};
+export {addProject, projectState, selectProject, getSelectedProject, addTodoToProject, deleteTodo};
