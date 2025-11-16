@@ -1,5 +1,5 @@
-import { projectState, addProject } from "./project";
-
+import { projectState, addProject, selectProject } from "./project";
+import "../styles/personal-page.css";
 import logoImage from "../resources/todologo.png";
 
 export function render() {
@@ -21,15 +21,13 @@ export function render() {
     logo.src = logoImage;
     logo.id = "logo";
     logo.style.width = "120px";
-    logo.style.display = "block";
-    logo.style.margin = "20px auto";
     sideBar.appendChild(logo);
 
     // TITLE
     const title = document.createElement("p");
     title.textContent = "Projects";
     title.style.fontWeight = "bold";
-    title.style.textAlign = "center";
+    title.style.textAlign = "start";
     title.style.marginBottom = "10px";
     title.style.fontSize = "38px";
     sideBar.appendChild(title);
@@ -54,7 +52,7 @@ export function render() {
 
         // listener
         item.addEventListener("click", () => {
-            projectState.selectedProjectID = project.id;
+            selectProject(project.id);
             render();
         });
 
