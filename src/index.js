@@ -4,4 +4,5 @@ import "../styles/general-styles.css";
 
 const myFirstProject = addProject("My first project");
 const d = addProject("mysecond project");
+
 render();

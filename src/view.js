@@ -1,8 +1,10 @@
-import { projectState, addProject, selectProject } from "./project";
+import { projectState, selectProject, getSelectedProject} from "./project";
 import "../styles/personal-page.css";
 import logoImage from "../resources/todologo.png";
 
 export function render() {
+    
+
     const root = document.getElementById("content");
     root.innerHTML = "";
 
@@ -59,9 +61,39 @@ export function render() {
         projectList.appendChild(item);
     });
 
+    const selectedProject = getSelectedProject();
+
+    // MAIN LAYOUT
     const main = document.createElement("div");
     main.id = "main";
     app.appendChild(main);
+
+    // CURRENT PROJECT TITLE
+    const selectedProjectTitle = document.createElement("p");
+
+    if (selectProject) {
+        selectedProjectTitle.textContent = selectedProject.name;
+    } else {
+        selectedProjectTitle.textContent = "No project selected";
+    }
+    
+    main.appendChild(selectedProjectTitle);
+
+    // DISPLAY TODO'S OF PROJECT
+
+    if (selectedProject) {
+        const toDoContainer = document.createElement("div");
+        toDoContainer.id = "toDoContainer";
+
+        selectedProject.todos.forEach(todo => {
+            const el = document.createElement("div");
+            el.textContent = todo.name;
+
+            toDoContainer.appendChild(todo);
+        });
+
+        main.appendChild(toDoContainer);
+    }
 
     
 }

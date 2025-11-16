@@ -35,4 +35,4 @@ function selectProject(id) {
     projectState.selectedProjectID = id;
 }
 
-export {addProject, projectState, selectProject};
+export {addProject, projectState, selectProject, getSelectedProject};

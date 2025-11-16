@@ -13,3 +13,13 @@
     padding-right: 30px;
     border-right: 2px solid rgba(255, 255, 255, 0.2);
 }
+
+#main {
+    display: flex;
+    flex-direction: column;
+}
+
+#toDoContainer {
+    display: flex;
+    flex-direction: column;
+}
