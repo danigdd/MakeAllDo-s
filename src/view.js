@@ -2,10 +2,39 @@ import { projectState, selectProject, getSelectedProject} from "./project";
 import "../styles/personal-page.css";
 import logoImage from "../resources/todologo.png";
 
-export function render() {
+const root = document.getElementById("content");
+
+function openForm() {
+    root.style.transition = "0.2s";
+    root.style.opacity = 0.3;
+
+    const overlay = document.createElement("div");
+    overlay.id = "overlay";
+    document.body.appendChild(overlay);
+
     
 
-    const root = document.getElementById("content");
+    const form = document.createElement("div");
+    form.id = "formContainer";
+
+    const formProjectTitle = document.createElement("p");
+    formProjectTitle.id = "formProjectTitle";
+    formProjectTitle.textContent = "Create a new To-Do for " +  getSelectedProject().name;
+    form.appendChild(formProjectTitle);
+    overlay.appendChild(form);
+
+    // if a click is outside the form or the save/discard button is clicked, close the form
+    overlay.addEventListener("click", e => {
+        if (e.target === overlay) closeForm();
+    });
+}
+
+function closeForm() {
+    root.style.opacity = 1;
+    const overlay = document.getElementById("overlay");
+    if (overlay) overlay.remove();
+}
+export function render() {
     root.innerHTML = "";
 
     const app = document.createElement("div");
@@ -79,7 +108,7 @@ export function render() {
     
     main.appendChild(selectedProjectTitle);
 
-    // DISPLAY TODO'S OF PROJECT
+    // DISPLAY TODO'S OF SELECTED PROJECT
 
     if (selectedProject) {
         const toDoContainer = document.createElement("div");
@@ -91,6 +120,17 @@ export function render() {
 
             toDoContainer.appendChild(todo);
         });
+
+        const newToDoButton = document.createElement("button");
+        newToDoButton.id = "newToDoButton";
+        newToDoButton.textContent = "New To-Do";
+        toDoContainer.appendChild(newToDoButton);
+
+        // event listener for creating a new to do
+        newToDoButton.addEventListener("click", () => {
+            openForm();
+        });
+
 
         main.appendChild(toDoContainer);
     }
