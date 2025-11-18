@@ -21,6 +21,32 @@ function openForm() {
     formProjectTitle.id = "formProjectTitle";
     formProjectTitle.textContent = "Create a new To-Do for " +  getSelectedProject().name;
     form.appendChild(formProjectTitle);
+
+    form.innerHTML += 
+    `
+    <form id = "formOfNewTODO">
+        <label>Title</label>
+        <input type = "text" id = "title_to_do" placeholder = "Title..." name = "title_to_do"></input>
+
+        <label>Description</label>
+        <input type = "text" id = "description_to_do" placeholder = "Description..." name = "description_to_do"></input>
+
+        <label>Due date</label>
+        <input type = "date" id = "dueDate_to_do" placeholder = "Due date..." name = "dueDate_to_do"></input>
+
+        <label>Priority</label>
+        <select name = "priority_to_do" id = "priority_to_do" style="color:black;">
+            <option value = "" disable selected hidden>Priority...</option>
+            <option value = "high">High</option>
+            <option value = "medium">Medium</option>
+            <option value = "low">Low</option>  
+        </select>
+
+        <button type = "submit">Add new To-Do</button>
+    </form>
+    
+    `
+
     overlay.appendChild(form);
 
     // if a click is outside the form or the save/discard button is clicked, close the form
@@ -34,6 +60,7 @@ function closeForm() {
     const overlay = document.getElementById("overlay");
     if (overlay) overlay.remove();
 }
+
 export function render() {
     root.innerHTML = "";
 

@@ -13,7 +13,7 @@
     width: 700px;
     height: 800px;
     border-radius: 10px;
-    background-color: yellow;
+    background-color: aquamarine;
 }
 
 #formProjectTitle {
@@ -43,4 +43,8 @@
 #toDoContainer {
     display: flex;
     flex-direction: column;
+}
+
+option {
+    color: black;
 }
