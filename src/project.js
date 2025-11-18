@@ -15,8 +15,10 @@ const projectState = {
 
 function addTodoToProject(projectId, todo) {
     const project = projectState.projects.find(p => p.id === projectId);
+    console.log(`Project found! Name of the project: ${project.name}`)
     if (!project) return;
     project.todos.push(todo);
+    
 }
 
 function deleteTodo(projectId, todoId) {

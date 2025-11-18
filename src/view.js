@@ -55,7 +55,7 @@ function openForm() {
     });
 }
 
-function closeForm() {
+export function closeForm() {
     root.style.opacity = 1;
     const overlay = document.getElementById("overlay");
     if (overlay) overlay.remove();
@@ -141,12 +141,16 @@ export function render() {
         const toDoContainer = document.createElement("div");
         toDoContainer.id = "toDoContainer";
 
+        console.log("INSIDE OF LOOP");
         selectedProject.todos.forEach(todo => {
+            console.log("INSIDE OF SEARCHING TODOS");
             const el = document.createElement("div");
-            el.textContent = todo.name;
+            el.textContent = todo.title;
 
-            toDoContainer.appendChild(todo);
+            toDoContainer.appendChild(el);
+            console.log("OUTSIDE OF SEARCHING TODOS");
         });
+        console.log("OUTSIDE OF LOOP");
 
         const newToDoButton = document.createElement("button");
         newToDoButton.id = "newToDoButton";
