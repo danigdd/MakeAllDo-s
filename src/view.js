@@ -153,6 +153,14 @@ export function render() {
             toDoItemDescription.textContent = todo.description;
             toDoItem.appendChild(toDoItemDescription);
 
+            const toDoDueDate = document.createElement("div");
+            toDoDueDate.textContent = todo.dueDate;
+            toDoItem.appendChild(toDoDueDate);
+            
+            const toDoPriority = document.createElement("div");
+            toDoPriority.textContent = todo.priority.toUpperCase();
+            toDoItem.appendChild(toDoPriority);
+
             toDoContainer.appendChild(toDoItem);
         });
 

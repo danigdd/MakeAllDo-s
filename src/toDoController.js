@@ -9,29 +9,22 @@ document.addEventListener("submit", e => {
 
         const title = document.getElementById("title_to_do").value;
         const description = document.getElementById("description_to_do").value;
-        const date = document.getElementById("dueDate_to_do").value;
+        const dueDate = document.getElementById("dueDate_to_do").value;
         const priority = document.getElementById("priority_to_do").value;
-        const projectID = getSelectedProject().id;
+        const projectId = getSelectedProject().id;
 
-        console.log(projectID);
 
         const toDoObject = createTodo(
             {
                 title, 
                 description,
-                date,
+                dueDate,
                 priority,
-                projectID
+                projectId
             }
         );
-        console.log("object created");
 
-        for (let key in toDoObject) {
-            console.log(`${key} : ${toDoObject[key]}`);
-        }
-
-
-        addTodoToProject(projectID, toDoObject);
+        addTodoToProject(projectId, toDoObject);
         closeForm();
         render();
     }
