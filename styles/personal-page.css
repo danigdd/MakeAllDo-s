@@ -9,6 +9,10 @@
     align-items: center;
 }
 
+#app {
+    width: 100%;
+}
+
 #formContainer {
     width: 700px;
     height: 800px;
@@ -38,11 +42,25 @@
 #main {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    padding: 25px;
 }
 
 #toDoContainer {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    background-color: green;
+}
+
+#toDoContainer button {
+    width: 150px;
+}
+
+#toDoContainer div {
+    display: flex;
+    flex-direction: row;
+    background-color: burlywood;
 }
 
 option {

@@ -141,16 +141,20 @@ export function render() {
         const toDoContainer = document.createElement("div");
         toDoContainer.id = "toDoContainer";
 
-        console.log("INSIDE OF LOOP");
+        
         selectedProject.todos.forEach(todo => {
-            console.log("INSIDE OF SEARCHING TODOS");
-            const el = document.createElement("div");
-            el.textContent = todo.title;
+            const toDoItem = document.createElement("div");
 
-            toDoContainer.appendChild(el);
-            console.log("OUTSIDE OF SEARCHING TODOS");
+            const toDoItemTitle = document.createElement("div");
+            toDoItemTitle.textContent = todo.title;
+            toDoItem.appendChild(toDoItemTitle);
+
+            const toDoItemDescription = document.createElement("div");
+            toDoItemDescription.textContent = todo.description;
+            toDoItem.appendChild(toDoItemDescription);
+
+            toDoContainer.appendChild(toDoItem);
         });
-        console.log("OUTSIDE OF LOOP");
 
         const newToDoButton = document.createElement("button");
         newToDoButton.id = "newToDoButton";

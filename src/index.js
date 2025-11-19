@@ -4,8 +4,6 @@ import "./toDoController";
 import "../styles/general-styles.css";
 
 const myFirstProject = addProject("My first project");
-const d = addProject("mysecond project");
+const d = addProject("My second project");
 
-console.log("ALL TODOS OF PROJECT");
-console.log(myFirstProject.todos);
 render();
