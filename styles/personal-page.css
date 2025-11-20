@@ -20,6 +20,11 @@
     background-color: aquamarine;
 }
 
+#selectedProjectTitle {
+    font-size: 30px;
+    font-weight: bold;
+}
+
 #formProjectTitle {
     font-size: 30px;
 }
@@ -50,18 +55,32 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: green;
 }
 
-#toDoContainer button {
-    width: 150px;
-}
 
 #toDoContainer div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     background-color: burlywood;
+}
+
+#newToDoButton {
+    width: 50px;
+    height: 50px;
+    background-image: url("../resources/new_to_do_button.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    margin-top: 20px;
+    transition: 0.2s;
+}
+
+#newToDoButton:hover {
+    background-color: rgba(1,1,1,0.1);
+    cursor: pointer;
 }
 
 option {

@@ -126,6 +126,7 @@ export function render() {
 
     // CURRENT PROJECT TITLE
     const selectedProjectTitle = document.createElement("p");
+    selectedProjectTitle.id = "selectedProjectTitle";
 
     if (selectProject) {
         selectedProjectTitle.textContent = selectedProject.name;
@@ -166,7 +167,6 @@ export function render() {
 
         const newToDoButton = document.createElement("button");
         newToDoButton.id = "newToDoButton";
-        newToDoButton.textContent = "New To-Do";
         toDoContainer.appendChild(newToDoButton);
 
         // event listener for creating a new to do
