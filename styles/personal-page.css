@@ -65,12 +65,33 @@
     width: 100%;
 }
 
+#annexMainLayout {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    height: 50px;
+    padding: 0px 2px;
+    gap: 230px
+}
 
-#toDoContainer div {
+.toDoItem {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: burlywood;
+    align-items: center;
+    border-radius: 5px;
+    padding: 0px 10px;
+    margin-top: 10px;
+    background-color: rgba(92, 164, 208, 0.5);
+    border: 0.2px solid white;
+    height: 50px;
+    transition: 0.2s;
+}
+
+.toDoItem:hover {
+    background-color: rgba(1,1,1,0.2);
+    cursor: pointer;
 }
 
 #newToDoButton {

@@ -135,7 +135,32 @@ export function render() {
     }
     
     main.appendChild(selectedProjectTitle);
+    
+    // ANNEX OF MAIN LAYOUT
+    const annex = document.createElement("div");
+    annex.id = "annexMainLayout";
 
+    const titleAnnex = document.createElement("div");
+    titleAnnex.id = "titleAnnex";
+    titleAnnex.textContent = "Title";
+    annex.appendChild(titleAnnex);
+
+    const descriptionAnnex = document.createElement("div")
+    descriptionAnnex.id = "descriptionAnnex";
+    descriptionAnnex.textContent = "Description";
+    annex.appendChild(descriptionAnnex);
+
+    const dateAnnex = document.createElement("div");
+    dateAnnex.id = "dateAnnex";
+    dateAnnex.textContent = "Date";
+    annex.appendChild(dateAnnex);
+
+    const priorityAnnex = document.createElement("div");
+    priorityAnnex.id = "priorityAnnex";
+    priorityAnnex.textContent = "Priority";
+    annex.appendChild(priorityAnnex);
+
+    main.appendChild(annex);
     // DISPLAY TODO'S OF SELECTED PROJECT
 
     if (selectedProject) {
@@ -145,6 +170,7 @@ export function render() {
         
         selectedProject.todos.forEach(todo => {
             const toDoItem = document.createElement("div");
+            toDoItem.className = "toDoItem";
 
             const toDoItemTitle = document.createElement("div");
             toDoItemTitle.textContent = todo.title;
