@@ -13,12 +13,7 @@
     width: 100%;
 }
 
-#formContainer {
-    width: 700px;
-    height: 800px;
-    border-radius: 10px;
-    background-color: aquamarine;
-}
+
 
 #selectedProjectTitle {
     font-size: 30px;
@@ -63,16 +58,17 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    overflow: scroll;
+    height: 100%;
 }
 
 #annexMainLayout {
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
     height: 50px;
     padding: 0px 2px;
-    gap: 230px
 }
 
 .toDoItem {

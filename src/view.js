@@ -1,5 +1,6 @@
 import { projectState, selectProject, getSelectedProject} from "./project";
 import "../styles/personal-page.css";
+import "../styles/form-styles.css";
 import logoImage from "../resources/todologo.png";
 
 const root = document.getElementById("content");
@@ -25,22 +26,30 @@ function openForm() {
     form.innerHTML += 
     `
     <form id = "formOfNewTODO">
-        <label>Title</label>
-        <input type = "text" id = "title_to_do" placeholder = "Title..." name = "title_to_do"></input>
+        <div id = "title-wrap">
+            <label>Title</label>
+            <input type = "text" id = "title_to_do" placeholder = "Title..." name = "title_to_do"></input>
+        </div>
 
-        <label>Description</label>
-        <input type = "text" id = "description_to_do" placeholder = "Description..." name = "description_to_do"></input>
+        <div id = "description-wrap">
+            <label>Description</label>
+            <input type = "text" id = "description_to_do" placeholder = "Description..." name = "description_to_do"></input>
+        </div>
 
-        <label>Due date</label>
-        <input type = "date" id = "dueDate_to_do" placeholder = "Due date..." name = "dueDate_to_do"></input>
+        <div id = "dueDate-wrap">
+            <label>Due date</label>
+            <input type = "date" id = "dueDate_to_do" placeholder = "Due date..." name = "dueDate_to_do"></input>
+        </div>
 
-        <label>Priority</label>
-        <select name = "priority_to_do" id = "priority_to_do" style="color:black;">
-            <option value = "" disable selected hidden>Priority...</option>
-            <option value = "high">High</option>
-            <option value = "medium">Medium</option>
-            <option value = "low">Low</option>  
-        </select>
+        <div id = "priority-wrap">
+            <label>Priority</label>
+            <select name = "priority_to_do" id = "priority_to_do" style="color:black;">
+                <option value = "" disable selected hidden>Priority...</option>
+                <option value = "high">High</option>
+                <option value = "medium">Medium</option>
+                <option value = "low">Low</option>  
+            </select>
+        </div>
 
         <button type = "submit">Add new To-Do</button>
     </form>
