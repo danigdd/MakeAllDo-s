@@ -5,7 +5,7 @@ import logoImage from "../resources/todologo.png";
 
 const root = document.getElementById("content");
 
-function openFormNewTODO() {
+function openForm(htmlContent) {
     root.style.transition = "0.2s";
     root.style.opacity = 0.3;
 
@@ -18,13 +18,21 @@ function openFormNewTODO() {
     const form = document.createElement("div");
     form.id = "formContainer";
 
-    const formProjectTitle = document.createElement("p");
-    formProjectTitle.id = "formProjectTitle";
-    formProjectTitle.textContent = "Create a new To-Do for " +  getSelectedProject().name;
-    form.appendChild(formProjectTitle);
 
-    form.innerHTML += 
-    `
+    form.innerHTML += htmlContent
+
+
+    overlay.appendChild(form);
+
+    // if a click is outside the form or the save/discard button is clicked, close the form
+    overlay.addEventListener("click", e => {
+        if (e.target === overlay) closeForm();
+    });
+}
+
+function htmlContentTODO() {
+    return `
+    <p id = "formProjectTitle">Create a new To-Do for ${getSelectedProject().name}</p>
     <form id = "formOfNewTODO">
         <div id = "title-wrap">
             <label>Title</label>
@@ -52,21 +60,12 @@ function openFormNewTODO() {
         </div>
 
         <button type = "submit">Add new To-Do</button>
-    </form>
-    
-    `
-
-    overlay.appendChild(form);
-
-    // if a click is outside the form or the save/discard button is clicked, close the form
-    overlay.addEventListener("click", e => {
-        if (e.target === overlay) closeForm();
-    });
+    </form>`
 }
 
-function openFormNewPROJECT() {
-    
-}   
+function htmlContentPROJECT() {
+
+}
 
 export function closeForm() {
     root.style.opacity = 1;
@@ -221,7 +220,8 @@ export function render() {
 
         // event listener for creating a new to do
         newToDoButton.addEventListener("click", () => {
-            openFormNewTODO();
+            const contentTODO = htmlContentTODO();
+            openForm(contentTODO);
         });
 
 
