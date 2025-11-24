@@ -5,7 +5,7 @@ import logoImage from "../resources/todologo.png";
 
 const root = document.getElementById("content");
 
-function openForm() {
+function openFormNewTODO() {
     root.style.transition = "0.2s";
     root.style.opacity = 0.3;
 
@@ -64,11 +64,17 @@ function openForm() {
     });
 }
 
+function openFormNewPROJECT() {
+    
+}   
+
 export function closeForm() {
     root.style.opacity = 1;
     const overlay = document.getElementById("overlay");
     if (overlay) overlay.remove();
 }
+
+// MAIN RENDER FUCNTION
 
 export function render() {
     root.innerHTML = "";
@@ -79,6 +85,7 @@ export function render() {
 
     root.appendChild(app);
 
+    // SIDEBAR
     const sideBar = document.createElement("div");
     sideBar.id = "sidebar";
     app.appendChild(sideBar);
@@ -127,6 +134,14 @@ export function render() {
     });
 
     const selectedProject = getSelectedProject();
+
+    // NEW PROJECT BUTTON
+    const newProjectButton = document.createElement("button");
+    newProjectButton.id = "newProjectButton";
+    sideBar.appendChild(newProjectButton);
+    newProjectButton.addEventListener("click", () => {
+
+    });
 
     // MAIN LAYOUT
     const main = document.createElement("div");
@@ -206,7 +221,7 @@ export function render() {
 
         // event listener for creating a new to do
         newToDoButton.addEventListener("click", () => {
-            openForm();
+            openFormNewTODO();
         });
 
 
