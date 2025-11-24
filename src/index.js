@@ -1,9 +1,9 @@
 import { render } from "./view";
 import { addProject } from "./project";
 import "./toDoController";
+import "./projectController";
 import "../styles/general-styles.css";
 
-const myFirstProject = addProject("My first project");
-const d = addProject("My second project");
+const myFirstProject = addProject("My first project", "First project");
 
 render();

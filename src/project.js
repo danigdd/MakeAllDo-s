@@ -1,8 +1,9 @@
 class Project {
-    constructor(name) {
+    constructor(name, description) {
         this.id = crypto.randomUUID();
         this.todos = [];
         this.name = name;
+        this.description = description;
     }
 }
 
@@ -28,8 +29,8 @@ function deleteTodo(projectId, todoId) {
 }
 
 // State manipulation
-function addProject(name) {
-    const project = new Project(name);
+function addProject(name, description) {
+    const project = new Project(name, description);
     projectState.projects.push(project);
 
     // if first project, we mark it as default
