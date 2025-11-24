@@ -64,7 +64,21 @@ function htmlContentTODO() {
 }
 
 function htmlContentPROJECT() {
+    return `
+    <p id = "formProjectTitle">Create a new Project</p>
+    <form id = "formOfNewProject">
+        <div id = "title-wrap">
+            <label>Title</label>
+            <input type = "text" id = "title_project" placeholder = "Title..." name = "title_project"></input>
+        </div>
 
+        <div id = "description-wrap">
+            <label>Description</label>
+            <input type = "text" id = "description_project" placeholder = "Description..." name = "description_project"></input>
+        </div>
+
+        <button type = "submit">Add new Project</button>
+    </form>`
 }
 
 export function closeForm() {
@@ -139,7 +153,8 @@ export function render() {
     newProjectButton.id = "newProjectButton";
     sideBar.appendChild(newProjectButton);
     newProjectButton.addEventListener("click", () => {
-
+        const projectContent = htmlContentPROJECT();
+        openForm(projectContent);
     });
 
     // MAIN LAYOUT

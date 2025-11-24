@@ -1,6 +1,6 @@
 #formContainer {
     width: 700px;
-    height: 800px;
+    height: 600px;
     min-height: 500px;
     border: 2px solid white;
     padding: 20px 30px;
@@ -14,7 +14,7 @@
     align-items: center;
 }
 
-#formOfNewTODO {
+form {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -22,17 +22,17 @@
     height: 100%;
 }
 
-#formOfNewTODO div {
+form div {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-#formOfNewTODO label {
+form label {
     font-size: 20px;
 }
 
-#formOfNewTODO input {
+form input {
     height: 40px;
     text-align: start;
     padding-left: 30px;
@@ -44,15 +44,15 @@
     transition: 0.3s;
 }
 
-#formOfNewTODO input:focus {
+form input:focus {
     outline: 3px solid rgb(144, 144, 226);
 }
 
-#formOfNewTODO select {
+form select {
     height: 40px;
 }
 
-#formOfNewTODO button {
+form button {
     align-self: center;
     padding: 20px 40px;
     background-color: #7dc3ee;
@@ -61,7 +61,12 @@
     transition: 0.2s;
 }
 
-#formOfNewTODO button:hover {
+form button:hover {
     cursor: pointer;
     background-color: #4b8ab1;
+}
+
+#formOfNewProject #description-wrap {
+    margin-top: 30px;
+    margin-bottom: auto;
 }
