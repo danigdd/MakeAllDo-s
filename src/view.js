@@ -5,7 +5,7 @@ import logoImage from "../resources/todologo.png";
 
 const root = document.getElementById("content");
 
-function openForm(htmlContent) {
+function openForm(optionFormToOpen) {
     root.style.transition = "0.2s";
     root.style.opacity = 0.3;
 
@@ -13,14 +13,15 @@ function openForm(htmlContent) {
     overlay.id = "overlay";
     document.body.appendChild(overlay);
 
-    const form = document.createElement("div");
-    form.id = "formContainer";
+    const formContainer = document.createElement("div");
+    formContainer.id = "formContainer";
 
 
-    form.innerHTML += htmlContent
+    //form.innerHTML += htmlContent
+    addFormHTML(optionFormToOpen, formContainer);
 
 
-    overlay.appendChild(form);
+    overlay.appendChild(formContainer);
 
     // if a click is outside the form or the save/discard button is clicked, close the form
     overlay.addEventListener("click", e => {
@@ -28,56 +29,170 @@ function openForm(htmlContent) {
     });
 }
 
-function htmlContentTODO() {
-    return `
-    <p id = "formProjectTitle">Create a new To-Do for ${getSelectedProject().name}</p>
-    <form id = "formOfNewTODO">
-        <div id = "title-wrap">
-            <label>Title</label>
-            <input type = "text" id = "title_to_do" placeholder = "Title..." name = "title_to_do"></input>
-        </div>
-
-        <div id = "description-wrap">
-            <label>Description</label>
-            <input type = "text" id = "description_to_do" placeholder = "Description..." name = "description_to_do"></input>
-        </div>
-
-        <div id = "dueDate-wrap">
-            <label>Due date</label>
-            <input type = "date" id = "dueDate_to_do" placeholder = "Due date..." name = "dueDate_to_do"></input>
-        </div>
-
-        <div id = "priority-wrap">
-            <label>Priority</label>
-            <select name = "priority_to_do" id = "priority_to_do" style="color:black;">
-                <option value = "" disable selected hidden>Priority...</option>
-                <option value = "high">High</option>
-                <option value = "medium">Medium</option>
-                <option value = "low">Low</option>  
-            </select>
-        </div>
-
-        <button type = "submit">Add new To-Do</button>
-    </form>`
+function addFormHTML(option, formContainer) {
+    if (option === "new-todo") htmlContentTODO(formContainer);
+    else if (option === "new-project") htmlContentPROJECT(formContainer);
 }
 
-function htmlContentPROJECT() {
-    return `
-    <p id = "formProjectTitle">Create a new Project</p>
-    <form id = "formOfNewProject">
-        <div id = "title-wrap">
-            <label>Title</label>
-            <input type = "text" id = "title_project" placeholder = "Title..." name = "title_project"></input>
-        </div>
+function htmlContentTODO(form) {
+    //TITLE PARAGRAPH
+    const p = document.createElement("p");
+    p.id = "formProjectTitle";
+    p.textContent = `Create a new To-Do for ${getSelectedProject().name}`;
+    form.appendChild(p);
 
-        <div id = "description-wrap">
-            <label>Description</label>
-            <input type = "text" id = "description_project" placeholder = "Description..." name = "description_project"></input>
-        </div>
+    // INTERNAL FORM
+    const innerForm = document.createElement("form");
+    innerForm.id = "formOfNewTODO";
 
-        <button type = "submit">Add new Project</button>
-    </form>`
+    // TITLE WRAP
+    const titleWrap = document.createElement("div");
+    titleWrap.id = "title-wrap";
+
+    const titleLabel = document.createElement("label");
+    titleLabel.textContent = "Title";
+    titleWrap.appendChild(titleLabel);
+
+    const titleInput = document.createElement("input");
+    titleInput.type = "text";
+    titleInput.id = "title_to_do";
+    titleInput.name = "title_to_do";
+    titleInput.placeholder = "Title...";
+    titleWrap.appendChild(titleInput);
+
+    innerForm.appendChild(titleWrap);
+
+    // DESCRIPTION WRAP
+    const descWrap = document.createElement("div");
+    descWrap.id = "description-wrap";
+
+    const descLabel = document.createElement("label");
+    descLabel.textContent = "Description";
+    descWrap.appendChild(descLabel);
+
+    const descInput = document.createElement("input");
+    descInput.type = "text";
+    descInput.id = "description_to_do";
+    descInput.name = "description_to_do";
+    descInput.placeholder = "Description...";
+    descWrap.appendChild(descInput);
+
+    innerForm.appendChild(descWrap);
+
+    // DUE DATE WRAP
+    const dueWrap = document.createElement("div");
+    dueWrap.id = "dueDate-wrap";
+
+    const dueLabel = document.createElement("label");
+    dueLabel.textContent = "Due date";
+    dueWrap.appendChild(dueLabel);
+
+    const dueInput = document.createElement("input");
+    dueInput.type = "date";
+    dueInput.id = "dueDate_to_do";
+    dueInput.name = "dueDate_to_do";
+    dueInput.placeholder = "Due date...";
+    dueWrap.appendChild(dueInput);
+
+    innerForm.appendChild(dueWrap);
+
+    // PRIORITY WRAP
+    const priorityWrap = document.createElement("div");
+    priorityWrap.id = "priority-wrap";
+
+    const priorityLabel = document.createElement("label");
+    priorityLabel.textContent = "Priority";
+    priorityWrap.appendChild(priorityLabel);
+
+    const prioritySelect = document.createElement("select");
+    prioritySelect.id = "priority_to_do";
+    prioritySelect.name = "priority_to_do";
+    prioritySelect.style.color = "black";
+
+    const optionDefault = document.createElement("option");
+    optionDefault.value = "";
+    optionDefault.disabled = true;
+    optionDefault.selected = true;
+    optionDefault.hidden = true;
+    optionDefault.textContent = "Priority...";
+    prioritySelect.appendChild(optionDefault);
+
+    const optionHigh = document.createElement("option");
+    optionHigh.value = "high";
+    optionHigh.textContent = "High";
+    prioritySelect.appendChild(optionHigh);
+
+    const optionMedium = document.createElement("option");
+    optionMedium.value = "medium";
+    optionMedium.textContent = "Medium";
+    prioritySelect.appendChild(optionMedium);
+
+    const optionLow = document.createElement("option");
+    optionLow.value = "low";
+    optionLow.textContent = "Low";
+    prioritySelect.appendChild(optionLow);
+
+    priorityWrap.appendChild(prioritySelect);
+    innerForm.appendChild(priorityWrap);
+
+    // SUBMIT BUTTON
+    const submitBtn = document.createElement("button");
+    submitBtn.type = "submit";
+    submitBtn.textContent = "Add new To-Do";
+    innerForm.appendChild(submitBtn);
+
+    form.appendChild(innerForm);
 }
+
+function htmlContentPROJECT(form) {
+    const p = document.createElement("p");
+    p.id = "formProjectTitle";
+    p.textContent = "Create a new Project";
+    form.appendChild(p);
+
+    const innerForm = document.createElement("form");
+    innerForm.id = "formOfNewProject";
+
+    const titleWrap = document.createElement("div");
+    titleWrap.id = "title-wrap";
+
+    const titleLabel = document.createElement("label");
+    titleLabel.textContent = "Title";
+    titleWrap.appendChild(titleLabel);
+
+    const titleInput = document.createElement("input");
+    titleInput.type = "text";
+    titleInput.id = "title_project";
+    titleInput.name = "title_project";
+    titleInput.placeholder = "Title...";
+    titleWrap.appendChild(titleInput);
+
+    innerForm.appendChild(titleWrap);
+
+    const descWrap = document.createElement("div");
+    descWrap.id = "description-wrap";
+
+    const descLabel = document.createElement("label");
+    descLabel.textContent = "Description";
+    descWrap.appendChild(descLabel);
+
+    const descInput = document.createElement("input");
+    descInput.type = "text";
+    descInput.id = "description_project";
+    descInput.name = "description_project";
+    descInput.placeholder = "Description...";
+    descWrap.appendChild(descInput);
+
+    innerForm.appendChild(descWrap);
+
+    const submitBtn = document.createElement("button");
+    submitBtn.type = "submit";
+    submitBtn.textContent = "Add new Project";
+    innerForm.appendChild(submitBtn);
+
+    form.appendChild(innerForm);
+}
+
 
 export function closeForm() {
     root.style.opacity = 1;
@@ -156,8 +271,7 @@ export function render() {
     newProjectButton.id = "newProjectButton";
     sideBar.appendChild(newProjectButton);
     newProjectButton.addEventListener("click", () => {
-        const projectContent = htmlContentPROJECT();
-        openForm(projectContent);
+        openForm("new-project");
     });
 
     // MAIN LAYOUT
@@ -238,8 +352,7 @@ export function render() {
 
         // event listener for creating a new to do
         newToDoButton.addEventListener("click", () => {
-            const contentTODO = htmlContentTODO();
-            openForm(contentTODO);
+            openForm("new-todo");
         });
 
 
