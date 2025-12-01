@@ -13,8 +13,6 @@ function openForm(htmlContent) {
     overlay.id = "overlay";
     document.body.appendChild(overlay);
 
-    
-
     const form = document.createElement("div");
     form.id = "formContainer";
 
@@ -85,6 +83,11 @@ export function closeForm() {
     root.style.opacity = 1;
     const overlay = document.getElementById("overlay");
     if (overlay) overlay.remove();
+}
+
+export function crossTODO(todo) {
+    todo.style.textDecoration = "line-through"
+    todo.style.opacity = "0.4";
 }
 
 // MAIN RENDER FUCNTION

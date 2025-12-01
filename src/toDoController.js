@@ -1,6 +1,6 @@
 import { getSelectedProject, addTodoToProject } from "./project";
 import { createTodo } from "./todoitem";
-import { render, closeForm} from "./view";
+import { render, closeForm, crossTODO} from "./view";
 
 document.addEventListener("submit", e => {
     if (e.target.id == "formOfNewTODO") {
@@ -27,5 +27,11 @@ document.addEventListener("submit", e => {
         addTodoToProject(projectId, toDoObject);
         closeForm();
         render();
+    }
+});
+
+document.addEventListener("click",  e => {
+    if (e.target.className == "toDoItem") {
+        crossTODO(e.target);
     }
 });
