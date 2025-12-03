@@ -1,4 +1,5 @@
-import { projectState, selectProject, getSelectedProject} from "./project";
+import { projectState, selectProject, getSelectedProject, getTODO} from "./project";
+import { checkTodoCrossed } from "./todoitem";
 import "../styles/personal-page.css";
 import "../styles/form-styles.css";
 import logoImage from "../resources/todologo.png";
@@ -201,8 +202,11 @@ export function closeForm() {
 }
 
 export function crossTODO(todo) {
+    const todo_internal_item = getTODO(todo.id);
+    todo_internal_item.crossed = true;
     todo.style.textDecoration = "line-through"
     todo.style.opacity = "0.4";
+    
 }
 
 // MAIN RENDER FUCNTION
@@ -326,10 +330,12 @@ export function render() {
         selectedProject.todos.forEach(todo => {
             const toDoItem = document.createElement("div");
             toDoItem.className = "toDoItem";
+            toDoItem.id = todo.id;
 
             const toDoItemTitle = document.createElement("div");
             toDoItemTitle.textContent = todo.title;
             toDoItem.appendChild(toDoItemTitle);
+            
 
             const toDoItemDescription = document.createElement("div");
             toDoItemDescription.textContent = todo.description;
@@ -344,6 +350,11 @@ export function render() {
             toDoItem.appendChild(toDoPriority);
 
             toDoContainer.appendChild(toDoItem);
+
+            if (todo.crossed) {
+                crossTODO(toDoItem);
+            }
+            
         });
 
         const newToDoButton = document.createElement("button");

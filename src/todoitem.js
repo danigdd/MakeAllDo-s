@@ -5,8 +5,15 @@ function createTodo({ title, description, dueDate, priority, projectId }) {
         description,
         dueDate,
         priority,
-        projectId
+        projectId,
+        crossed : false
     };
 }
 
-export {createTodo};
+function checkTodoCrossed(todo) {
+    if (todo.crossed == true) return true;
+    else return false;
+}
+
+
+export {createTodo, checkTodoCrossed};

@@ -13,13 +13,18 @@ const projectState = {
     selectedProjectID : null
 }
 
+// global state for todos
+const todoState = {
+    todos: []
+}
+
 
 function addTodoToProject(projectId, todo) {
     const project = projectState.projects.find(p => p.id === projectId);
     console.log(`Project found! Name of the project: ${project.name}`)
     if (!project) return;
     project.todos.push(todo);
-    
+    todoState.todos.push(todo);
 }
 
 function deleteTodo(projectId, todoId) {
@@ -51,4 +56,8 @@ function selectProject(id) {
     projectState.selectedProjectID = id;
 }
 
-export {addProject, projectState, selectProject, getSelectedProject, addTodoToProject, deleteTodo};
+function getTODO(id) {
+    return todoState.todos.find(todo => todo.id === id);
+}
+
+export {addProject, projectState,  selectProject, getSelectedProject, addTodoToProject, deleteTodo, getTODO};
