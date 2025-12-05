@@ -203,9 +203,19 @@ export function closeForm() {
 
 export function crossTODO(todo) {
     const todo_internal_item = getTODO(todo.id);
-    todo_internal_item.crossed = true;
-    todo.style.textDecoration = "line-through"
-    todo.style.opacity = "0.4";
+    let is_todo_crossed = checkTodoCrossed(todo_internal_item);
+
+    if (!is_todo_crossed) {
+        todo.style.textDecoration = "line-through"
+        todo.style.opacity = "0.4";
+        todo_internal_item.crossed = true;
+    } else {
+        todo.style.textDecoration = "none"
+        todo.style.opacity = "1";
+        todo_internal_item.crossed = false;
+    }
+    
+    
     
 }
 
@@ -352,7 +362,8 @@ export function render() {
             toDoContainer.appendChild(toDoItem);
 
             if (todo.crossed) {
-                crossTODO(toDoItem);
+                toDoItem.style.textDecoration = "line-through"
+                toDoItem.style.opacity = "0.4";
             }
             
         });
