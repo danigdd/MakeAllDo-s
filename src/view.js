@@ -63,22 +63,6 @@ function htmlContentTODO(form) {
 
     innerForm.appendChild(titleWrap);
 
-    // DESCRIPTION WRAP
-    const descWrap = document.createElement("div");
-    descWrap.id = "description-wrap";
-
-    const descLabel = document.createElement("label");
-    descLabel.textContent = "Description";
-    descWrap.appendChild(descLabel);
-
-    const descInput = document.createElement("input");
-    descInput.type = "text";
-    descInput.id = "description_to_do";
-    descInput.name = "description_to_do";
-    descInput.placeholder = "Description...";
-    descWrap.appendChild(descInput);
-
-    innerForm.appendChild(descWrap);
 
     // DUE DATE WRAP
     const dueWrap = document.createElement("div");
@@ -313,11 +297,6 @@ export function render() {
     titleAnnex.id = "titleAnnex";
     titleAnnex.textContent = "Title";
     annex.appendChild(titleAnnex);
-
-    const descriptionAnnex = document.createElement("div")
-    descriptionAnnex.id = "descriptionAnnex";
-    descriptionAnnex.textContent = "Description";
-    annex.appendChild(descriptionAnnex);
 
     const dateAnnex = document.createElement("div");
     dateAnnex.id = "dateAnnex";

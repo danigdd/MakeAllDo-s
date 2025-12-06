@@ -1,8 +1,7 @@
-function createTodo({ title, description, dueDate, priority, projectId }) {
+function createTodo({ title, dueDate, priority, projectId }) {
     return {
         id: crypto.randomUUID(),
         title,
-        description,
         dueDate,
         priority,
         projectId,
