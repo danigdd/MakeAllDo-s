@@ -324,11 +324,6 @@ export function render() {
             const toDoItemTitle = document.createElement("div");
             toDoItemTitle.textContent = todo.title;
             toDoItem.appendChild(toDoItemTitle);
-            
-
-            const toDoItemDescription = document.createElement("div");
-            toDoItemDescription.textContent = todo.description;
-            toDoItem.appendChild(toDoItemDescription);
 
             const toDoDueDate = document.createElement("div");
             toDoDueDate.textContent = todo.dueDate;
