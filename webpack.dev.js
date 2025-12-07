@@ -11,6 +11,12 @@ module.exports = merge(common, {
   },
   devtool: "eval-source-map",
   devServer: {
-    watchFiles: ["./src/template.html"],
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
+    port: 8080,
+    hot: false,       
+    open: false,      
+    client: false, 
   },
 });
