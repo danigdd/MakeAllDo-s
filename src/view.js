@@ -48,7 +48,12 @@ function htmlContentTODO(form) {
   // INTERNAL FORM
   const innerForm = document.createElement("form");
   innerForm.id = "formOfNewTODO";
+  innerForm.noValidate = true;
 
+  //validation message
+  const validationMessage = document.createElement("label")
+  validationMessage.id = "validationMessage";
+  innerForm.appendChild(validationMessage);
   // TITLE WRAP
   const titleWrap = document.createElement("div");
   titleWrap.id = "title-wrap";
@@ -63,6 +68,7 @@ function htmlContentTODO(form) {
   titleInput.name = "title_to_do";
   titleInput.placeholder = "Title...";
   titleInput.minLength = "5";
+  titleInput.required = true;
   titleWrap.appendChild(titleInput);
 
   innerForm.appendChild(titleWrap);
@@ -80,6 +86,7 @@ function htmlContentTODO(form) {
   dueInput.id = "dueDate_to_do";
   dueInput.name = "dueDate_to_do";
   dueInput.placeholder = "Due date...";
+  dueInput.required = true;
   dueWrap.appendChild(dueInput);
 
   innerForm.appendChild(dueWrap);
@@ -96,6 +103,7 @@ function htmlContentTODO(form) {
   prioritySelect.id = "priority_to_do";
   prioritySelect.name = "priority_to_do";
   prioritySelect.style.color = "black";
+  prioritySelect.required = true;
 
   const optionDefault = document.createElement("option");
   optionDefault.value = "";
