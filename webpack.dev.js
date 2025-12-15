@@ -17,6 +17,8 @@ module.exports = merge(common, {
     port: 8080,
     hot: false,       
     open: false,      
-    client: false, 
+    client: {
+      logging: "none"
+    },
   },
 });

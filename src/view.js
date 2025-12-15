@@ -62,6 +62,7 @@ function htmlContentTODO(form) {
   titleInput.id = "title_to_do";
   titleInput.name = "title_to_do";
   titleInput.placeholder = "Title...";
+  titleInput.minLength = "5";
   titleWrap.appendChild(titleInput);
 
   innerForm.appendChild(titleWrap);
